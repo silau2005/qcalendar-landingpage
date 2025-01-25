@@ -4,7 +4,7 @@ app:
   #featured: Featured in
 
 footer:
-  copyright: Copyright ©2024-2025 <a href="https://regnum.io" target="_blank">Regnum Digital</a>.
+  copyright: Copyright © 2024-2025 <a href="https://regnum.io" target="_blank">Regnum Digital</a>.
   links:
     #- title: Github
     #  url: https://github.com/sandoche/Mobile-app-landingpage-template
