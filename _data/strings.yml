@@ -9,6 +9,8 @@ footer:
     #- title: Github
     #  url: https://github.com/sandoche/Mobile-app-landingpage-template
     #  target: _blank
+    - title: Home
+      url: /
     - title: Terms & Conditions
       url: /terms-and-conditions
     - title: Privacy
