@@ -1,21 +1,25 @@
-name: Mobile App Name
-description: A super tagline for the mobile app
-full_description: 'A more complete description of the mobile app<br>
-<br>With a lot of features:
-<br>- Feature 1
-<br>- Feature 2
-<br>- Feature 3'
-android: https://telegra.ph/Replace-this-link-07-23
-iOS: https://telegra.ph/Replace-this-link-07-23
-web: https://telegra.ph/Replace-this-link-07-23
+name: Q Calendar
+description: 超萌行事曆，讓計劃變得有趣！
+full_description: 'Q 行事曆是一款超萌現代的行事曆應用程序，專為熱愛生活和注重效率的你設計。告别繁瑣的日程管理，讓 Q 行事曆成為你的生活好幫手！<br>
+<br>主要功能：
+<br>- 拖曳可愛貼紙： 用各種可愛的貼紙裝飾你的日程，展現你的個性風格！
+<br>- 高效日程管理： 創建事件、設置提醒、安排日程，輕鬆管理你的工作和生活！ 
+<br>- 個性化設置： 選擇你喜歡的顏色和主題，自定義你的行事曆外觀！
+<br>
+<br>立即下載 Q 行事曆，讓你的生活更加井井有條！'
+android: https://regnum.io
+iOS: https://regnum.io
+web: https://regnum.io
 screenshots:
   - 1.png
   - 2.png
   - 3.png
   - 4.png
-producthunt: https://telegra.ph/Replace-this-link-07-23
-companies:
-  - url: https://telegra.ph/Replace-this-link-07-23
-    image: androidpolice.png
-  - url: https://telegra.ph/Replace-this-link-07-23
-    image: producthunt.png
+  - 5.png
+  - 6.png
+producthunt: https://regnum.io
+#companies:
+#  - url: https://regnum.io
+#    image: androidpolice.png
+#  - url: https://regnum.io
+#    image: producthunt.png

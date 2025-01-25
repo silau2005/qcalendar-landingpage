@@ -8,6 +8,7 @@ const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = Merge(CommonConfig, {
+  mode: 'production',
   output: {
     filename: '[name]-[hash].bundle.js',
     path: path.resolve('assets'),
