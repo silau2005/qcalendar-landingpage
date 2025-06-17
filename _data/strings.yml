@@ -1,6 +1,6 @@
 app:
-  screenshots: 預覽與截圖
-  description: 用可愛的貼紙裝飾你的日程，並使用高效的功能輕鬆管理你的生活
+  screenshots: Preview & Screenshots #預覽與截圖
+  description: Decorate your schedule with cute stickers and easily manage your life with efficient features. #用可愛的貼紙裝飾你的日程，並使用高效的功能輕鬆管理你的生活
   #featured: Featured in
 
 footer:
@@ -15,5 +15,5 @@ footer:
       url: /terms-and-conditions
     - title: Privacy
       url: /privacy
-    - title: About Us
-      url: /about-us
+    - title: About
+      url: /about

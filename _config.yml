@@ -16,13 +16,13 @@ logo: assets/images/large-logo.png
 twitter:
   username: silau
 social:
-  name: Sandoche Adittane
+  name: Silau
   links:
-    - https://twitter.com/sandochee
-    - https://www.facebook.com/sandoche
-    - https://www.linkedin.com/in/sandoche
-    - https://plus.google.com/+SandocheADITTANE
-    - https://github.com/sandoche
+    #- https://twitter.com/sandochee
+    #- https://www.facebook.com/sandoche
+    #- https://www.linkedin.com/in/sandoche
+    #- https://plus.google.com/+SandocheADITTANE
+    #- https://github.com/sandoche
 
 languages: ["en"]
 ampdir: amp
