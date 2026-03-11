@@ -1,100 +1,148 @@
 <p align="center">
-  <img src="/docs/animation/animation.gif" width="150">
+  <img src="/_images/appicon.png" width="150">
 </p>
-<h1 align="center">Mobile App Landing Page Template</h1>
-<p>
-  <a href="/LICENSE"><img src="https://img.shields.io/github/license/mashape/apistatus.svg" alt="MIT"></a>
-  <a href="https://medium.com/@sandoche" target="_blank"><img src="https://badgen.net/badge/icon/medium?icon=medium&label" alt="medium: sandoche"></a>
-  <a href="https://twitter.com/sandochee">
-    <img alt="Twitter: sandochee" src="https://img.shields.io/twitter/follow/sandochee.svg?style=social" target="_blank" />
-  </a>
-</p>
+<h1 align="center">Q Calendar Landing Page</h1>
 
-📱 Free to use static generated landing page template for your mobile app
+📱 Static landing page for Q Calendar - a cute, modern calendar app with stickers
+
+## 🌐 Live URLs
+
+| Language | URL | Description |
+|----------|-----|-------------|
+| **中文** | `/` | Default (Chinese) |
+| **English** | `/en/` | English version |
+| **日本語** | `/ja/` | Japanese version |
+
+**Production:** https://regnum.io  
+**Repository:** `silau2005/qcalendar-landingpage`
+
+---
 
 ## 💡 Features
-Mobile App Landing Page Template comes with pre-installed features and options:
-- Display app icon
-- Show unlimited app screenshots
-- Link to Google Play
-- Link to the AppStore
-- Link to the Web App
-- Press mention section
-- Product Hunt floating prompt
-- Privacy policy Page
-- Google Analytics
-- Cookie Consent
-- Automatic dark theme
-- Doorbell widget
-- Github forking banner
 
-## ✨ Demo
-Check out websites using the Mobile App Template:
-- https://mobileapplandingpage.learn.uno (demo website)
-- https://gitnews.learn.uno
-- https://textblast.learn.uno
-- https://infinideas.learn.uno
-- https://www.therandominion.com/
+- ✅ Multi-language support (Chinese, English, Japanese)
+- ✅ URL-based language routing
+- ✅ Language switcher in footer
+- ✅ Display app icon & screenshots
+- ✅ Download links (Google Play, App Store, Web)
+- ✅ Privacy policy, Terms, About pages
+- ✅ Automatic dark theme
+- ✅ Dynamic copyright year (auto-updates)
+- ✅ SEO optimized (sitemap, meta tags, Open Graph)
 
-## 📖 How to use
+---
 
-### The normal way
+## 📁 Project Structure
 
-1. Fork this project
-2. Edit `_config.yml`, feel free to commut/uncomment what you need (google analtytics, or github for example)
-3. Edit `_data/app.yml` with your app data
-4. Update the text from `_data/strings.yml`, you can customize there the footer's links
-5. Edit icons and screenshots inside the `_images` folder and `icon.png` in the root
-6. Edit `_src/index.js` to update the product hunt modal (or to remove it) and to remove the darkmode plugin if you don't want it
-7. Deploy (on netlify, gitpages or surge, they are all free)
-
-### The no-code way
-
-1. Go to https://t3mpl.n4no.com/editor/#manifest=../templates/mobile-app-landing-page/template.yaml
-2. Edit the settings on the left part
-3. Click on the `Publish` button then `Save Webpage as .zip`
-4. Unzip and upload the folder to your server (you can drag'n'drop it in Netlify to host it there for free)
-
-## ⚙️ How to run
-
-### Pre-requisites
-- NodeJS
-- Ruby, Bundler
-
-### Install
 ```
+_data/
+├── app.yml           # English app content
+├── app_zh.yml        # Chinese app content (中文)
+├── app_ja.yml        # Japanese app content (日本語)
+├── strings.yml       # English UI strings
+├── strings_zh.yml    # Chinese UI strings
+└── strings_ja.yml    # Japanese UI strings
+
+_images/
+└── screenshots/      # App screenshots (1-6.png)
+
+_layouts/
+└── home.html         # Main layout with language detection
+
+_includes/
+└── footer.html       # Footer with language switcher
+```
+
+---
+
+## ⚙️ Development
+
+### Prerequisites
+- Node.js 18+
+- Docker (for Ruby/Jekyll)
+
+### Quick Start (Pre-built)
+```bash
+# Serve the production build
+npx http-server build/ -p 3030 -a 0.0.0.0
+```
+
+### Full Dev Mode (with LiveReload)
+```bash
+# Install dependencies
 npm install
-bundler install
+
+# Run webpack for assets
+npx webpack --env config=dev --watch
+
+# Run Jekyll with Docker (in another terminal)
+docker run --rm -v "$(pwd):/app" -w /app \
+  -p 3030:3030 -p 35729:35729 \
+  ruby:3.2 bash -c "
+    gem install bundler
+    bundle config set path 'vendor/bundle'
+    bundle install
+    bundle exec jekyll serve --port 3030 --host 0.0.0.0 --livereload
+  "
 ```
 
-### Development
-```
-npm start
-```
-
-### Build
-```
+### Production Build
+```bash
 npm run build
 ```
 
-### Deploy to netlify (for free)
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/sandoche/Mobile-app-landingpage-template)
+Output: `build/` folder (static HTML/CSS/JS)
 
-### More documentation
-This templates uses [Jekyll-webpack-boilerplate](https://github.com/sandoche/Jekyll-webpack-boilerplate), read more documentation there.
+---
 
-## 🤝 Contributing
-Contributions, issues and feature requests are welcome!
+## 📝 Content Management
 
-## ⭐️ Show your support
-Please ⭐️ this repository if this project helped you!
+### Update App Info
+Edit `_data/app.yml` (and `_data/app_zh.yml`, `_data/app_ja.yml`):
 
-<a href="https://www.patreon.com/sandoche">[![patreon.png](https://c5.patreon.com/external/logo/become_a_patron_button.png)](https://www.patreon.com/sandoche)</a>
+```yaml
+name: Q Calendar
+description: Q Calendar, Plan with a Smile!
+android: https://play.google.com/...
+iOS: https://apps.apple.com/...
+web: https://regnum.io
+```
 
-## 🍺 Buy me a beer 
-If you like this project, feel free to donate:
-* PayPal: https://www.paypal.me/kanbanote
-* Bitcoin: 19JiNZ1LkMaz57tewqJaTg2hQWH4RgW4Yp
-* Ethereum: 0xded81fa4624e05339924355fe3504ba9587d5419
-* Monero: 43jqzMquW2q989UKSrB2YbeffhmJhbYb2Yxu289bv7pLRh4xVgMKj5yTd52iL6x1dvCYs9ERg5biHYxMjGkpSTs6S2jMyJn
-* Motive: MOTIV-25T5-SD65-V7LJ-BBWRD (Get Motive Now: https://motive.network)
+### Update Screenshots
+Replace files in `_images/screenshots/` (1.png to 6.png)
+
+### Update Footer Links
+Edit `_data/strings.yml` (and language variants):
+
+```yaml
+footer:
+  links:
+    - title: Home
+      url: /en/
+    - title: Privacy
+      url: /privacy
+```
+
+---
+
+## 🚀 Deployment
+
+### Netlify / GitHub Pages
+1. Run `npm run build`
+2. Deploy `build/` folder
+3. Or connect repo for auto-deploy
+
+### Manual
+Upload `build/` folder contents to any static host
+
+---
+
+## 📖 Credits
+
+Based on [Mobile App Landing Page Template](https://github.com/sandoche/Mobile-app-landingpage-template) by Sandoche
+
+---
+
+## 📜 License
+
+MIT License - Free to use and modify
