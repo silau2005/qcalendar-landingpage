@@ -32,6 +32,98 @@
 
 ---
 
+## 🚀 Quick Start (Preview Site)
+
+Want to quickly preview the site? Just serve the pre-built files:
+
+```bash
+cd ~/app/qcalendar-landingpage
+npx http-server build/ -p 3030 -a 0.0.0.0
+```
+
+Then open:
+- **Local:** http://localhost:3030
+- **LAN:** http://192.168.50.202:3030
+
+No Ruby/Node.js dependencies needed for preview!
+
+---
+
+## 🛠️ Development Workflow
+
+### Prerequisites
+- Node.js 18+
+- Docker (for Ruby/Jekyll)
+
+### Option 1: Content Changes Only (Simple)
+
+If you're only editing YAML/Markdown files:
+
+```bash
+# 1. Start Jekyll dev server (one-time setup)
+cd ~/app/qcalendar-landingpage
+
+docker run --rm -v "$(pwd):/app" -w /app \
+  -p 3030:3030 -p 35729:35729 \
+  ruby:3.2 bash -c "
+    gem install bundler
+    bundle config set path 'vendor/bundle'
+    bundle install
+    bundle exec jekyll serve --port 3030 --host 0.0.0.0 --livereload
+  "
+
+# 2. Edit files (browser auto-refreshes!)
+# - _data/app*.yml       → App content
+# - _data/strings*.yml   → UI strings
+# - *.md files           → Pages
+```
+
+**What auto-reloads:** YAML, Markdown, HTML files  
+**Ports:** 3030 (site) + 35729 (LiveReload)
+
+---
+
+### Option 2: Full Development (CSS/JS Changes)
+
+If you're modifying styles or JavaScript:
+
+```bash
+# Terminal 1: Watch & rebuild assets
+cd ~/app/qcalendar-landingpage
+npm install
+npx webpack --env config=dev --watch
+
+# Terminal 2: Jekyll dev server
+docker run --rm -v "$(pwd):/app" -w /app \
+  -p 3030:3030 -p 35729:35729 \
+  ruby:3.2 bash -c "
+    gem install bundler
+    bundle config set path 'vendor/bundle'
+    bundle install
+    bundle exec jekyll serve --port 3030 --host 0.0.0.0 --livereload
+  "
+```
+
+**What rebuilds:**
+- `_src/**/*.js` → Webpack bundles
+- `_scss/**/*.scss` → Compiled CSS
+- Jekyll handles the rest
+
+---
+
+### Production Build
+
+Before deploying:
+
+```bash
+cd ~/app/qcalendar-landingpage
+npm run build
+```
+
+Output: `build/` folder (static HTML/CSS/JS)
+
+---
+
 ## 📁 Project Structure
 
 ```
@@ -52,46 +144,6 @@ _layouts/
 _includes/
 └── footer.html       # Footer with language switcher
 ```
-
----
-
-## ⚙️ Development
-
-### Prerequisites
-- Node.js 18+
-- Docker (for Ruby/Jekyll)
-
-### Quick Start (Pre-built)
-```bash
-# Serve the production build
-npx http-server build/ -p 3030 -a 0.0.0.0
-```
-
-### Full Dev Mode (with LiveReload)
-```bash
-# Install dependencies
-npm install
-
-# Run webpack for assets
-npx webpack --env config=dev --watch
-
-# Run Jekyll with Docker (in another terminal)
-docker run --rm -v "$(pwd):/app" -w /app \
-  -p 3030:3030 -p 35729:35729 \
-  ruby:3.2 bash -c "
-    gem install bundler
-    bundle config set path 'vendor/bundle'
-    bundle install
-    bundle exec jekyll serve --port 3030 --host 0.0.0.0 --livereload
-  "
-```
-
-### Production Build
-```bash
-npm run build
-```
-
-Output: `build/` folder (static HTML/CSS/JS)
 
 ---
 
