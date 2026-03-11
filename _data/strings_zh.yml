@@ -1,0 +1,15 @@
+app:
+  screenshots: 預覽與截圖
+  description: 用可愛的貼紙裝飾你的日程，並使用高效的功能輕鬆管理你的生活。
+
+footer:
+  copyright_prefix: 版權所有 © 2024-
+  links:
+    - title: 首頁
+      url: /
+    - title: 使用條款
+      url: /terms-and-conditions
+    - title: 隱私政策
+      url: /privacy
+    - title: 關於我們
+      url: /about

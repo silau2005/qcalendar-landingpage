@@ -348,6 +348,8 @@ h1, h2 {
     width: 100%;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
 
     @media (max-width: 768px) {
       flex-direction: column-reverse;
@@ -367,6 +369,22 @@ h1, h2 {
     @media (max-width: 768px) {
       margin-left: 0;
       margin-right: 8px;
+    }
+  }
+
+  &__languages {
+    font-size: $font-xxs;
+    opacity: 0.6;
+    
+    a {
+      font-size: $font-xxs !important;
+      color: $grey-color;
+      margin: 0 4px;
+      
+      &:hover {
+        opacity: 1;
+        color: $primary-color;
+      }
     }
   }
 

@@ -1,12 +1,29 @@
 <footer class="footer">
   <div class="container">
     <div class="footer__container">
-      <p class="footer__love">{{ site.data.strings.footer.copyright }}</p>
+      {% assign lang = page.lang | default: "en" %}
+      {% if lang == "zh" %}
+        {% assign footer_strings = site.data.strings_zh %}
+      {% elsif lang == "ja" %}
+        {% assign footer_strings = site.data.strings_ja %}
+      {% else %}
+        {% assign footer_strings = site.data.strings %}
+      {% endif %}
+      <p class="footer__love">{{ footer_strings.footer.copyright_prefix }}{{ site.time | date: "%Y" }} <a href="https://regnum.io" target="_blank">Regnum Digital</a></p>
       <ul class="footer__links">
-        {% for link in site.data.strings.footer.links %}
+        {% for link in footer_strings.footer.links %}
         <li class="footer__link"><a href="{{ link.url }}" target="{{ link.target }}">{{ link.title }}</a></li>
         {% endfor %}
       </ul>
+      <div class="footer__languages">
+        {% if lang == "en" %}
+          <a href="/">中文</a> · <a href="/ja/">日本語</a>
+        {% elsif lang == "zh" %}
+          <a href="/en/">English</a> · <a href="/ja/">日本語</a>
+        {% elsif lang == "ja" %}
+          <a href="/en/">English</a> · <a href="/">中文</a>
+        {% endif %}
+      </div>
     </div>
   </div>
 </footer>

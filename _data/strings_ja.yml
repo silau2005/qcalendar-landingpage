@@ -1,0 +1,15 @@
+app:
+  screenshots: プレビュー＆スクリーンショット
+  description: 可愛いステッカーでスケジュールをデコレーションし、効率的な機能で生活を簡単に管理しましょう。
+
+footer:
+  copyright_prefix: 著作権 © 2024-
+  links:
+    - title: ホーム
+      url: /ja/
+    - title: 利用規約
+      url: /terms-and-conditions
+    - title: プライバシー
+      url: /privacy
+    - title: 会社概要
+      url: /about
