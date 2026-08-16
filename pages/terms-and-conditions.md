@@ -39,9 +39,11 @@ Current third-party services include:
 
 The Service Provider may update this list if the Application's integrations change.
 
+Google Analytics for Firebase is optional. It is used only when you choose to enable anonymous usage sharing in the Application, and only to understand broad product use and improve Q Calendar. It is not used for advertising or personalised ads. You can change this choice at any time in **Settings > Privacy**.
+
 **Internet access**
 
-Some functions of the Application may require an internet connection, such as loading external links or sending limited analytics data.
+Some functions of the Application may require an internet connection, such as loading external links or sending optional analytics data after you choose to enable anonymous usage sharing.
 
 The Service Provider is not responsible if parts of the Application are unavailable because your device has no internet connection, limited connectivity, or insufficient mobile data.
 
@@ -79,7 +81,7 @@ If that happens, your right to use the Application will end, and you must stop u
 
 These Terms and Conditions may be updated from time to time. Updates will be reflected on this page.
 
-These terms and conditions are effective as of 2026-04-20.
+These terms and conditions are effective as of 2026-08-16.
 
 **Contact Us**
 

@@ -8,16 +8,18 @@ This privacy policy applies to the Q Calendar app (the "Application") for mobile
 
 Q Calendar is designed to be a local-first calendar. Your calendar content, stickers, and most app data are stored on your device.
 
-**What the Application collects**
+**Optional analytics**
 
-The Application may collect limited analytics information about how the app is used. This may include:
+Analytics are optional and are off unless you choose to enable anonymous usage sharing. You can change this choice at any time in **Settings > Privacy**.
 
-* app opens
-* screen usage
-* limited feature usage events such as sticker import, sticker management, and event save or delete actions
-* device and app information provided by the platform or analytics SDK
+If you enable anonymous usage sharing, Google Analytics for Firebase may receive:
 
-The Service Provider does not use analytics to collect the contents of your events, notes, sticker names, category names, or other user-written text.
+* app and session information
+* limited feature events: when a calendar event is saved (whether it is new and whether it has a sticker), and when a sticker import is completed (the import source and number of imported items)
+* app and device identifiers provided by the analytics SDK
+* coarse location inferred from your IP address
+
+The Application does not send calendar entries, event titles, descriptions, notes, dates, times, reminder values, calendar IDs, sticker images or names, filenames, categories, imported local files, or other user-written content to analytics.
 
 The Application does not collect precise location data.
 
@@ -40,11 +42,13 @@ The Service Provider uses information only for purposes such as:
 * operating core app features
 * storing and organizing your local calendar and sticker data on your device
 * improving stability and product quality
-* understanding broad usage patterns through limited analytics
+* understanding broad product use through optional analytics when you enable it
+
+Analytics are used for product improvement only, not for advertising or personalised ads.
 
 **Third-party services**
 
-The Application uses third-party services that may process limited technical or analytics data according to their own policies.
+The Application uses third-party services that may process limited technical or analytics data according to their own policies. If you enable anonymous usage sharing, Google processes analytics data under its own terms and privacy policy.
 
 Current third-party services include:
 
@@ -67,7 +71,7 @@ The Service Provider may disclose limited information only:
 
 Most Application data is stored locally on your device.
 
-Limited analytics data collected through third-party services is retained according to those providers' policies.
+Analytics data collected after you enable anonymous usage sharing is retained according to Google's policies. If you opt out, future analytics collection stops and locally stored analytics data is cleared. Opting out cannot erase data that Google has already processed.
 
 If you uninstall the Application, locally stored app data may be removed from your device, subject to your platform's normal uninstall behavior.
 
@@ -87,7 +91,7 @@ Because much of the Application's data is stored locally, the security of your d
 
 This Privacy Policy may be updated from time to time. Updates will be reflected on this page.
 
-This privacy policy is effective as of 2026-04-20.
+This privacy policy is effective as of 2026-08-16.
 
 **Contact Us**
 
