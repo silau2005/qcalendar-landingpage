@@ -36,14 +36,15 @@ Current third-party services include:
 
 * [Google Play Services](https://policies.google.com/terms)
 * [Google Analytics for Firebase](https://www.google.com/analytics/terms/)
+* [Firebase Crashlytics](https://firebase.google.com/terms/crashlytics)
 
 The Service Provider may update this list if the Application's integrations change.
 
-Google Analytics for Firebase is optional. It is used only when you choose to enable anonymous usage sharing in the Application, and only to understand broad product use and improve Q Calendar. It is not used for advertising or personalised ads. You can change this choice at any time in **Settings > Privacy**.
+The Application uses Google Analytics for Firebase and Firebase Crashlytics to help keep Q Calendar working and understand broad product use. A little anonymous app-health information is collected as part of using the app. In-depth usage sharing is optional and can be changed in **Settings > Privacy**. These services are not used for advertising or personalised ads.
 
 **Internet access**
 
-Some functions of the Application may require an internet connection, such as loading external links or sending optional analytics data after you choose to enable anonymous usage sharing.
+Some functions of the Application may require an internet connection, such as loading external links or sending app-health, crash, and optional in-depth usage information.
 
 The Service Provider is not responsible if parts of the Application are unavailable because your device has no internet connection, limited connectivity, or insufficient mobile data.
 
@@ -81,7 +82,7 @@ If that happens, your right to use the Application will end, and you must stop u
 
 These Terms and Conditions may be updated from time to time. Updates will be reflected on this page.
 
-These terms and conditions are effective as of 2026-08-16.
+These terms and conditions are effective as of 2026-08-23.
 
 **Contact Us**
 

@@ -8,20 +8,17 @@ This privacy policy applies to the Q Calendar app (the "Application") for mobile
 
 Q Calendar is designed to be a local-first calendar. Your calendar content, stickers, and most app data are stored on your device.
 
-**Optional analytics**
+**App health and in-depth usage**
 
-Analytics are optional and are off unless you choose to enable anonymous usage sharing. You can change this choice at any time in **Settings > Privacy**.
+Q Calendar collects a little anonymous information to keep the app working. This includes app starts, app version updates, crash reports, and coarse app or session information.
 
-If you enable anonymous usage sharing, Google Analytics for Firebase may receive:
+It does not include your identity, the screens you visit, calendar entries, sticker images, or other content you write.
 
-* app and session information
-* limited feature events: when a calendar event is saved (whether it is new and whether it has a sticker), and when a sticker import is completed (the import source and number of imported items)
-* app and device identifiers provided by the analytics SDK
-* coarse location inferred from your IP address
+You can also choose to share in-depth usage. If you do, we may receive a little more about how Q Calendar is used, such as when an event is saved or stickers are imported. This does not include the content of your events or stickers.
 
-The Application does not send calendar entries, event titles, descriptions, notes, dates, times, reminder values, calendar IDs, sticker images or names, filenames, categories, imported local files, or other user-written content to analytics.
+In-depth usage is off until you turn it on. You can change this any time in **Settings > Privacy**. Turning it off stops that extra sharing. It does not turn off the basic information we use to keep the app working, and it cannot erase information Google has already processed.
 
-The Application does not collect precise location data.
+Google Analytics for Firebase and Firebase Crashlytics may also receive app or device identifiers from their SDKs, and coarse location inferred from an IP address. We do not set a user ID. We do not use this information for advertising or personalised ads. The Application does not collect precise location data.
 
 **Photos, files, and local access**
 
@@ -42,17 +39,18 @@ The Service Provider uses information only for purposes such as:
 * operating core app features
 * storing and organizing your local calendar and sticker data on your device
 * improving stability and product quality
-* understanding broad product use through optional analytics when you enable it
+* understanding broad product use, including optional in-depth usage when you enable it
 
-Analytics are used for product improvement only, not for advertising or personalised ads.
+This information is used to keep Q Calendar working and to improve the app. It is not used for advertising or personalised ads.
 
 **Third-party services**
 
-The Application uses third-party services that may process limited technical or analytics data according to their own policies. If you enable anonymous usage sharing, Google processes analytics data under its own terms and privacy policy.
+The Application uses third-party services that may process limited technical, analytics, or crash-report data according to their own policies. Google processes this information under its own terms and privacy policy.
 
 Current third-party services include:
 
 * [Google Analytics for Firebase](https://firebase.google.com/support/privacy)
+* [Firebase Crashlytics](https://firebase.google.com/support/privacy)
 * [Google Play Services](https://www.google.com/policies/privacy/)
 
 If the Application adds or removes third-party services in the future, this page will be updated to reflect that.
@@ -69,9 +67,7 @@ The Service Provider may disclose limited information only:
 
 **Data retention**
 
-Most Application data is stored locally on your device.
-
-Analytics data collected after you enable anonymous usage sharing is retained according to Google's policies. If you opt out, future analytics collection stops and locally stored analytics data is cleared. Opting out cannot erase data that Google has already processed.
+Most Application data is stored locally on your device. App-health, crash, and analytics information is retained according to Google’s policies. If you turn off in-depth usage, that extra sharing stops. Basic app-health information continues, and information Google has already processed cannot be erased from here.
 
 If you uninstall the Application, locally stored app data may be removed from your device, subject to your platform's normal uninstall behavior.
 
@@ -91,7 +87,7 @@ Because much of the Application's data is stored locally, the security of your d
 
 This Privacy Policy may be updated from time to time. Updates will be reflected on this page.
 
-This privacy policy is effective as of 2026-08-16.
+This privacy policy is effective as of 2026-08-23.
 
 **Contact Us**
 
