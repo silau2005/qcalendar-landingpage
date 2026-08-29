@@ -34,17 +34,16 @@ The Application may use third-party services that have their own terms and priva
 
 Current third-party services include:
 
-* [Google Play Services](https://policies.google.com/terms)
 * [Google Analytics for Firebase](https://www.google.com/analytics/terms/)
 * [Firebase Crashlytics](https://firebase.google.com/terms/crashlytics)
 
 The Service Provider may update this list if the Application's integrations change.
 
-The Application uses Google Analytics for Firebase and Firebase Crashlytics to help keep Q Calendar working and understand broad product use. A little anonymous app-health information is collected as part of using the app. In-depth usage sharing is optional and can be changed in **Settings > Privacy**. These services are not used for advertising or personalised ads.
+The Application uses these services to improve reliability and understand broad product use. Product Analytics and Crash Reporting are enabled by default, and each can be turned off on the first-launch privacy notice or later in **Settings > Privacy**. Calendar and sticker content is not included, and the services are not used for advertising or remarketing. More information is available in the Application's [Privacy Policy](/privacy/).
 
 **Internet access**
 
-Some functions of the Application may require an internet connection, such as loading external links or sending app-health, crash, and optional in-depth usage information.
+Some functions of the Application may require an internet connection, such as loading external links or sending Product Analytics or Crash Reporting information when those services are enabled.
 
 The Service Provider is not responsible if parts of the Application are unavailable because your device has no internet connection, limited connectivity, or insufficient mobile data.
 
@@ -82,7 +81,7 @@ If that happens, your right to use the Application will end, and you must stop u
 
 These Terms and Conditions may be updated from time to time. Updates will be reflected on this page.
 
-These terms and conditions are effective as of 2026-08-23.
+These terms and conditions are effective as of 2026-08-29.
 
 **Contact Us**
 
