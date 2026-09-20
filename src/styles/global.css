@@ -154,14 +154,15 @@ h3 {
   align-items: center;
 }
 .store-links img {
-  width: 150px;
+  width: auto;
   height: 50px;
   object-fit: contain;
 }
 .store-links .google-badge {
-  width: 175px;
-  height: 68px;
-  margin: -9px -10px;
+  /* Compensate for the PNG's transparent border to match the App Store badge. */
+  max-width: none;
+  height: 75px;
+  margin: -12.5px;
 }
 .hero-art {
   position: relative;
