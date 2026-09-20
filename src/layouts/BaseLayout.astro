@@ -1,0 +1,103 @@
+---
+import ThemePicker from '../components/ThemePicker.astro';
+import { content, languages, site, type Locale } from '../content/site';
+import '../styles/global.css';
+interface Props {
+  title: string;
+  description: string;
+  locale?: Locale;
+  home?: boolean;
+  noindex?: boolean;
+}
+const {
+  title,
+  description,
+  locale = 'en',
+  home = false,
+  noindex = false,
+} = Astro.props;
+const copy = content[locale];
+const language = languages.find((language) => language.locale === locale)!;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang={language.tag}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#fffaf7" />
+    {noindex && <meta name="robots" content="noindex" />}
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/png" href="/assets/images/appicon.png" />
+    <link rel="apple-touch-icon" href="/assets/images/appicon.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta
+      property="og:image"
+      content={new URL('/assets/images/appicon.png', Astro.site)}
+    />
+    <meta name="twitter:card" content="summary" />
+    {home &&
+      languages.map((item) => (
+        <link
+          rel="alternate"
+          hreflang={item.tag}
+          href={new URL(item.path, Astro.site)}
+        />
+      ))}
+    {home && <link rel="alternate" hreflang="x-default" href={Astro.site} />}
+    <script is:inline>
+      try {
+        const theme = localStorage.getItem('qcalendar-theme');
+        if (['light', 'dark', 'system'].includes(theme))
+          document.documentElement.dataset.theme = theme;
+      } catch {
+        /* Use system colors when storage is unavailable. */
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">
+      {copy.skip}
+    </a>
+    <header class="site-header wrap">
+      <a class="brand" href={language.path} aria-label={copy.name}>
+        <img src="/assets/images/appicon.png" alt="" width="42" height="42" />
+        <span>{copy.name}</span>
+      </a>
+      <nav aria-label="Language" class="languages">
+        {languages.map((item) => (
+          <a
+            href={item.path}
+            lang={item.tag}
+            aria-current={home && item.locale === locale ? 'page' : undefined}
+          >
+            {item.label}
+          </a>
+        ))}
+      </nav>
+    </header>
+    <main id="main">
+      <slot />
+    </main>
+    <footer class="site-footer wrap">
+      <div>
+        <a class="footer-brand" href={site.companyUrl}>
+          Regnum Digital ↗
+        </a>
+        <p>© 2024–{new Date().getFullYear()} Regnum Digital</p>
+      </div>
+      <nav aria-label="Footer">
+        <a href="/about/">{copy.about}</a>
+        <a href="/privacy/">{copy.privacy}</a>
+        <a href="/terms-and-conditions/">{copy.terms}</a>
+      </nav>
+      <ThemePicker locale={locale} />
+    </footer>
+  </body>
+</html>

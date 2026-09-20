@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import StoreLinks from './StoreLinks.astro';
+import { content, type Locale } from '../content/site';
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const copy = content[locale];
+---
+
+<BaseLayout
+  title={`${copy.name} · ${copy.tagline}`}
+  description={copy.description}
+  locale={locale}
+  home
+>
+  <section class="hero wrap">
+    <div class="hero-copy">
+      <p class="eyebrow">
+        <span aria-hidden="true">✳</span> {copy.eyebrow}
+      </p>
+      <h1>{copy.tagline}</h1>
+      <p class="intro">{copy.description}</p>
+      <StoreLinks placement="hero" />
+      <p class="caption">{copy.available}</p>
+    </div>
+    <div class="hero-art">
+      <span class="art-flower" aria-hidden="true">
+        ✿
+      </span>
+      <img
+        class="hero-screenshot"
+        src="/assets/images/screenshots/1.png"
+        alt={`${copy.screenshot} 1`}
+        width="1125"
+        height="2436"
+        fetchpriority="high"
+      />
+      <span class="art-note" aria-hidden="true">
+        Plan with a smile. ♡
+      </span>
+    </div>
+  </section>
+  <section class="features wrap" aria-labelledby="features-title">
+    <h2 id="features-title">{copy.features}</h2>
+    <div class="feature-grid">
+      {copy.featureItems.map((feature) => (
+        <article class="feature">
+          <span class="feature-symbol" aria-hidden="true">
+            {feature.symbol}
+          </span>
+          <h3>{feature.title}</h3>
+          <p>{feature.description}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+  <section class="preview-section" aria-labelledby="preview-title">
+    <div class="wrap section-heading">
+      <div>
+        <p class="eyebrow">Q CALENDAR</p>
+        <h2 id="preview-title">{copy.preview}</h2>
+      </div>
+      <p>{copy.previewDescription}</p>
+    </div>
+    <div class="gallery wrap">
+      {[2, 3, 4, 5, 6].map((number) => (
+        <a
+          href={`/assets/images/screenshots/${number}.png`}
+          aria-label={`${copy.screenshot} ${number}`}
+        >
+          <img
+            src={`/assets/images/screenshots/${number}.png`}
+            alt={`${copy.screenshot} ${number}`}
+            width="1125"
+            height="2436"
+            loading="lazy"
+            decoding="async"
+          />
+        </a>
+      ))}
+    </div>
+  </section>
+  <section class="closing wrap" aria-labelledby="download-title">
+    <img
+      src="/assets/images/appicon.png"
+      alt=""
+      width="76"
+      height="76"
+      loading="lazy"
+    />
+    <h2 id="download-title">{copy.closing}</h2>
+    <p>{copy.closingDescription}</p>
+    <StoreLinks placement="footer" />
+  </section>
+</BaseLayout>

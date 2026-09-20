@@ -1,200 +1,73 @@
-<p align="center">
-  <img src="/_images/appicon.png" width="150">
-</p>
-<h1 align="center">Q Calendar Landing Page</h1>
+# Q Calendar website
 
-📱 Static landing page for Q Calendar - a cute, modern calendar app with stickers
+The static, multilingual marketing site at https://qcalendar.regnum.io.
+Built with Astro and TypeScript. Node 24 is pinned in `.nvmrc`.
 
-## 🌐 Live URLs
+## Develop
 
-| Language | URL | Description |
-|----------|-----|-------------|
-| **中文** | `/` | Default (Chinese) |
-| **English** | `/en/` | English version |
-| **日本語** | `/ja/` | Japanese version |
-
-**Production:** https://regnum.io  
-**Repository:** `silau2005/qcalendar-landingpage`
-
----
-
-## 💡 Features
-
-- ✅ Multi-language support (Chinese, English, Japanese)
-- ✅ URL-based language routing
-- ✅ Language switcher in footer
-- ✅ Display app icon & screenshots
-- ✅ Download links (Google Play, App Store, Web)
-- ✅ Privacy policy, Terms, About pages
-- ✅ Automatic dark theme
-- ✅ Dynamic copyright year (auto-updates)
-- ✅ SEO optimized (sitemap, meta tags, Open Graph)
-
----
-
-## 🚀 Quick Start (Preview Site)
-
-Want to quickly preview the site? Just serve the pre-built files:
-
-```bash
-cd ~/app/qcalendar-landingpage
-npx http-server build/ -p 3030 -a 0.0.0.0
+```sh
+nvm use
+npm ci
+npm run dev
 ```
 
-Then open:
-- **Local:** http://localhost:3030
-- **LAN:** http://192.168.50.202:3030
+Open http://localhost:4321. Chinese is at `/`, English at `/en/`, and Japanese at `/ja/`.
 
-No Ruby/Node.js dependencies needed for preview!
-
----
-
-## 🛠️ Development Workflow
-
-### Prerequisites
-- Node.js 18+
-- Docker (for Ruby/Jekyll)
-
-### Option 1: Content Changes Only (Simple)
-
-If you're only editing YAML/Markdown files:
-
-```bash
-# 1. Start Jekyll dev server (one-time setup)
-cd ~/app/qcalendar-landingpage
-
-docker run --rm -v "$(pwd):/app" -w /app \
-  -p 3030:3030 -p 35729:35729 \
-  ruby:3.2 bash -c "
-    gem install bundler
-    bundle config set path 'vendor/bundle'
-    bundle install
-    bundle exec jekyll serve --port 3030 --host 0.0.0.0 --livereload
-  "
-
-# 2. Edit files (browser auto-refreshes!)
-# - _data/app*.yml       → App content
-# - _data/strings*.yml   → UI strings
-# - *.md files           → Pages
+```sh
+npm run check       # Astro and TypeScript diagnostics
+npm run build       # Static output in build/ (not committed)
+npm run preview     # Serve the production build
+npx playwright install chromium
+npm test            # Desktop and mobile browser checks
+npm run validate    # Check, build, and browser tests
 ```
 
-**What auto-reloads:** YAML, Markdown, HTML files  
-**Ports:** 3030 (site) + 35729 (LiveReload)
+Astro may run dev/preview in the background when invoked by a coding agent. Use `npx astro dev stop` or `npx astro preview stop` to stop those servers. The test runner uses `--ignore-lock` to own its foreground server.
 
----
+## Deployment
 
-### Option 2: Full Development (CSS/JS Changes)
+Cloudflare Pages already connects this repository to `qcalendar-landingpage`.
+Production follows **master**. Pushes to other branches create preview deployments.
 
-If you're modifying styles or JavaScript:
+The configured build command is:
 
-```bash
-# Terminal 1: Watch & rebuild assets
-cd ~/app/qcalendar-landingpage
-npm install
-npx webpack --env config=dev --watch
-
-# Terminal 2: Jekyll dev server
-docker run --rm -v "$(pwd):/app" -w /app \
-  -p 3030:3030 -p 35729:35729 \
-  ruby:3.2 bash -c "
-    gem install bundler
-    bundle config set path 'vendor/bundle'
-    bundle install
-    bundle exec jekyll serve --port 3030 --host 0.0.0.0 --livereload
-  "
+```sh
+if [ -f astro.config.mjs ]; then npm run check && npm run build; fi
 ```
 
-**What rebuilds:**
-- `_src/**/*.js` → Webpack bundles
-- `_scss/**/*.scss` → Compiled CSS
-- Jekyll handles the rest
+Output directory: **build**. Node version: **24** (from `.nvmrc`).
+The conditional keeps the original Jekyll master branch deployable during migration: it publishes its existing committed build. After merging this rebuild, Cloudflare builds Astro from source on every production push. Future generated build files must not be committed.
 
----
+GitHub Actions also checks types, builds, and runs desktop/mobile browser tests on pull requests and pushes to `master` or `main`. It saves the static build as an artifact. Cloudflare handles publishing through its existing Git integration; no Cloudflare token is stored in GitHub.
 
-### Production Build
+Cloudflare builds independently of GitHub Actions. Type/build failures block Cloudflare deployment; browser tests are a separate GitHub check. Wait for both checks before merging a PR. If the production branch is renamed to `main`, update it in Cloudflare as well; the workflow already accepts either name.
 
-Before deploying:
+See [deployment operations](docs/deployment.md) for settings and rollback.
 
-```bash
-cd ~/app/qcalendar-landingpage
-npm run build
-```
+## Where to make changes
 
-Output: `build/` folder (static HTML/CSS/JS)
+| Area                                     | File or directory                 |
+| ---------------------------------------- | --------------------------------- |
+| Colors, fonts, spacing, light/dark theme | `src/styles/tokens.css`           |
+| Responsive layout and shared styles      | `src/styles/global.css`           |
+| Translations, store URLs, site identity  | `src/content/site.ts`             |
+| Homepage sections                        | `src/components/Home.astro`       |
+| Navigation, metadata, footer             | `src/layouts/BaseLayout.astro`    |
+| Markdown page layout                     | `src/layouts/ContentLayout.astro` |
+| About, privacy, terms                    | `src/pages/*.md`                  |
+| Existing app art and screenshots         | `public/assets/images/`           |
+| Browser regression checks                | `tests/site.spec.ts`              |
+| GitHub checks                            | `.github/workflows/website.yml`   |
 
----
+Use the shared tokens instead of introducing unrelated colors into components. Content pages use the same layout and theme. Theme choices are System, Light, and Dark, with the explicit choice stored locally. App artwork keeps its original colors in both themes.
 
-## 📁 Project Structure
+Existing `/about/`, `/privacy/`, `/terms-and-conditions/`, and language URLs are retained. `/zh/` redirects to `/`. `astro.config.mjs` owns the canonical product origin and generates a sitemap.
 
-```
-_data/
-├── app.yml           # English app content
-├── app_zh.yml        # Chinese app content (中文)
-├── app_ja.yml        # Japanese app content (日本語)
-├── strings.yml       # English UI strings
-├── strings_zh.yml    # Chinese UI strings
-└── strings_ja.yml    # Japanese UI strings
+## Analytics
 
-_images/
-└── screenshots/      # App screenshots (1-6.png)
+Website GA collection is not enabled in this foundation release. The existing Firebase project is for the mobile app; the intended use of its existing web stream still needs confirming. Store links already expose `data-store` and `data-placement` for future event instrumentation. Add website privacy disclosure and collection controls when enabling tracking.
 
-_layouts/
-└── home.html         # Main layout with language detection
+## Original assets and attribution
 
-_includes/
-└── footer.html       # Footer with language switcher
-```
-
----
-
-## 📝 Content Management
-
-### Update App Info
-Edit `_data/app.yml` (and `_data/app_zh.yml`, `_data/app_ja.yml`):
-
-```yaml
-name: Q Calendar
-description: Q Calendar, Plan with a Smile!
-android: https://play.google.com/...
-iOS: https://apps.apple.com/...
-web: https://regnum.io
-```
-
-### Update Screenshots
-Replace files in `_images/screenshots/` (1.png to 6.png)
-
-### Update Footer Links
-Edit `_data/strings.yml` (and language variants):
-
-```yaml
-footer:
-  links:
-    - title: Home
-      url: /en/
-    - title: Privacy
-      url: /privacy
-```
-
----
-
-## 🚀 Deployment
-
-### Netlify / GitHub Pages
-1. Run `npm run build`
-2. Deploy `build/` folder
-3. Or connect repo for auto-deploy
-
-### Manual
-Upload `build/` folder contents to any static host
-
----
-
-## 📖 Credits
-
-Based on [Mobile App Landing Page Template](https://github.com/sandoche/Mobile-app-landingpage-template) by Sandoche
-
----
-
-## 📜 License
-
-MIT License - Free to use and modify
+The original `_images/` artwork and `docs/` design source files are retained for reference. Public site assets are under `public/`.
+The previous site used Sandoche Adittane’s [Mobile App Landing Page Template](https://github.com/sandoche/Mobile-app-landingpage-template). Its MIT license is retained in `LICENSE`. Ruby/Jekyll, Webpack, generated site output, and template scripts have been removed from the active application; prior versions remain in Git history.

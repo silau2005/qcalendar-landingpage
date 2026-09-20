@@ -1,0 +1,30 @@
+---
+import { content, type Locale } from '../content/site';
+interface Props {
+  locale: Locale;
+}
+const copy = content[Astro.props.locale];
+---
+
+<label class="theme-picker">
+  <span>{copy.theme}</span>
+  <select id="theme-picker" aria-label={copy.theme}>
+    {Object.entries(copy.themes).map(([value, label]) => (
+      <option value={value}>{label}</option>
+    ))}
+  </select>
+</label>
+<script>
+  const picker = document.querySelector<HTMLSelectElement>('#theme-picker');
+  if (picker) {
+    picker.value = document.documentElement.dataset.theme || 'system';
+    picker.addEventListener('change', () => {
+      document.documentElement.dataset.theme = picker.value;
+      try {
+        localStorage.setItem('qcalendar-theme', picker.value);
+      } catch {
+        /* Storage may be disabled. */
+      }
+    });
+  }
+</script>
