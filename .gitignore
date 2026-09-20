@@ -1,12 +1,21 @@
-_site
-.sass-cache
-.jekyll-metadata
-node_modules
-/assets
-yarn-error.log
-.yarnclean
+node_modules/
+dist/
+.astro/
+.env
+.env.*
+!.env.example
+.DS_Store
+playwright-report/
+test-results/
+.wrangler/
+# Legacy local build artifacts
+_site/
+assets/
+!public/assets/
+build/
 vendor/
-
-# editors
-.idea
-.jekyll-cache
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+_layouts/
+.idea/

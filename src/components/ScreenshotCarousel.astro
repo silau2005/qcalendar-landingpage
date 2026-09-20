@@ -1,0 +1,150 @@
+---
+import { content, type Locale } from '../content/site';
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const copy = content[locale];
+---
+
+<section class="preview-section" aria-labelledby="preview-title" data-carousel>
+  <div class="wrap">
+    <div class="section-heading">
+      <h2 id="preview-title">{copy.preview}</h2>
+      <p>{copy.previewDescription}</p>
+    </div>
+    <div
+      class="screenshot-track"
+      id="screenshots"
+      tabindex="0"
+      role="region"
+      aria-labelledby="preview-title"
+      aria-describedby="scroll-hint"
+    >
+      {[1, 2, 3, 4, 5, 6].map((number) => (
+        <a href={`/assets/images/screenshots/${number}.png`}>
+          <img
+            src={`/assets/images/screenshots/${number}.png`}
+            alt={`${copy.screenshot} ${number}`}
+            width="1125"
+            height="2436"
+            loading="lazy"
+          />
+        </a>
+      ))}
+    </div>
+    <div class="carousel-footer">
+      <p id="scroll-hint">{copy.scrollHint}</p>
+      <div class="carousel-controls" hidden>
+        <button
+          type="button"
+          data-previous
+          aria-label={copy.previous}
+          aria-controls="screenshots"
+        >
+          <span aria-hidden="true">←</span>
+        </button>
+        <button
+          type="button"
+          data-next
+          aria-label={copy.next}
+          aria-controls="screenshots"
+        >
+          <span aria-hidden="true">→</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .screenshot-track {
+    display: flex;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-color: var(--color-muted) var(--color-surface);
+  }
+  /* These panels share artwork across their edges: keep them flush and uncropped. */
+  .screenshot-track a {
+    flex: 0 0 clamp(230px, 25vw, 300px);
+  }
+  .screenshot-track img {
+    width: 100%;
+  }
+  .screenshot-track a:focus-visible {
+    outline-offset: -4px;
+  }
+  .carousel-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  .carousel-footer p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--color-muted);
+  }
+  .carousel-controls:not([hidden]) {
+    display: flex;
+    gap: 0.5rem;
+  }
+  button {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--color-border);
+    background: var(--color-background);
+    color: var(--color-text);
+    font-size: 1.3rem;
+    cursor: pointer;
+  }
+  button:disabled {
+    opacity: 0.35;
+    cursor: default;
+  }
+</style>
+
+<script>
+  document
+    .querySelectorAll<HTMLElement>('[data-carousel]')
+    .forEach((carousel) => {
+      const track = carousel.querySelector<HTMLElement>('.screenshot-track')!;
+      const previous =
+        carousel.querySelector<HTMLButtonElement>('[data-previous]')!;
+      const next = carousel.querySelector<HTMLButtonElement>('[data-next]')!;
+      const update = () => {
+        previous.disabled = track.scrollLeft <= 1;
+        next.disabled =
+          track.scrollLeft >= track.scrollWidth - track.clientWidth - 1;
+      };
+      const move = (left: number) =>
+        track.scrollTo({
+          left,
+          behavior: matchMedia('(prefers-reduced-motion: reduce)').matches
+            ? 'instant'
+            : 'smooth',
+        });
+      const step = () => track.firstElementChild!.getBoundingClientRect().width;
+      previous.addEventListener('click', () => move(track.scrollLeft - step()));
+      next.addEventListener('click', () => move(track.scrollLeft + step()));
+      track.addEventListener('keydown', (event) => {
+        if (event.target !== track) return;
+        const destinations: Record<string, number> = {
+          ArrowLeft: track.scrollLeft - step(),
+          ArrowRight: track.scrollLeft + step(),
+          Home: 0,
+          End: track.scrollWidth,
+        };
+        if (event.key in destinations) {
+          event.preventDefault();
+          move(destinations[event.key]);
+        }
+      });
+      track.addEventListener('scroll', update, { passive: true });
+      new ResizeObserver(update).observe(track);
+      carousel.querySelector<HTMLElement>('.carousel-controls')!.hidden = false;
+      update();
+    });
+</script>

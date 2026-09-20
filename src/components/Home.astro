@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import StoreLinks from './StoreLinks.astro';
+import ScreenshotCarousel from './ScreenshotCarousel.astro';
+import { content, type Locale } from '../content/site';
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const copy = content[locale];
+---
+
+<BaseLayout
+  title={copy.tagline}
+  description={copy.description}
+  locale={locale}
+  home
+>
+  <section class="hero wrap">
+    <div class="hero-copy">
+      <p class="eyebrow">
+        <span aria-hidden="true">✳</span> {copy.eyebrow}
+      </p>
+      <h1>{copy.tagline}</h1>
+      <p class="intro">{copy.description}</p>
+      <StoreLinks placement="hero" />
+      <p class="caption">{copy.available}</p>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <img
+        class="hero-icon"
+        src="/assets/images/appicon.png"
+        alt=""
+        width="512"
+        height="512"
+      />
+    </div>
+  </section>
+  <ScreenshotCarousel locale={locale} />
+  <section class="features wrap" aria-labelledby="features-title">
+    <h2 id="features-title">{copy.features}</h2>
+    <div class="feature-grid">
+      {copy.featureItems.map((feature) => (
+        <article class="feature">
+          <span class="feature-symbol" aria-hidden="true">
+            {feature.symbol}
+          </span>
+          <h3>{feature.title}</h3>
+          <p>{feature.description}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+  <section class="closing wrap" aria-labelledby="download-title">
+    <img
+      src="/assets/images/appicon.png"
+      alt=""
+      width="76"
+      height="76"
+      loading="lazy"
+    />
+    <h2 id="download-title">{copy.closing}</h2>
+    <p>{copy.closingDescription}</p>
+    <StoreLinks placement="footer" />
+  </section>
+</BaseLayout>

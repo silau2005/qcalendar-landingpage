@@ -1,0 +1,37 @@
+---
+import { site } from '../content/site';
+interface Props {
+  placement: 'hero' | 'footer';
+}
+const { placement } = Astro.props;
+---
+
+<div class="store-links">
+  <a
+    href={site.stores.ios}
+    data-store="ios"
+    data-placement={placement}
+    aria-label="Download on the App Store"
+  >
+    <img
+      src="/assets/images/ios.svg"
+      alt="Download on the App Store"
+      width="150"
+      height="50"
+    />
+  </a>
+  <a
+    href={site.stores.android}
+    data-store="android"
+    data-placement={placement}
+    aria-label="Get it on Google Play"
+  >
+    <img
+      class="google-badge"
+      src="/assets/images/google-play-badge.png"
+      alt="Get it on Google Play"
+      width="193"
+      height="75"
+    />
+  </a>
+</div>

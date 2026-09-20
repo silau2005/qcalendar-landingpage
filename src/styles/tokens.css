@@ -1,0 +1,40 @@
+:root {
+  color-scheme: light;
+  --color-background: #fffaf7;
+  --color-surface: #f7efeb;
+  --color-text: #302a34;
+  --color-muted: #6c606d;
+  --color-accent: #91416b;
+  --color-border: #e7dcd8;
+  --color-pink: #f5c5d9;
+  --color-lilac: #ded9f4;
+  --color-mint: #dce9df;
+  --font-body: 'Avenir Next', 'Segoe UI', 'Noto Sans', system-ui, sans-serif;
+  --font-display: 'Avenir Next', 'Segoe UI', system-ui, sans-serif;
+  --width-content: 1120px;
+  --radius-small: 12px;
+  --radius-large: 28px;
+  --space-section: clamp(4rem, 8vw, 7rem);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+    --color-background: #201d24;
+    --color-surface: #2b2630;
+    --color-text: #f6edf1;
+    --color-muted: #c2b5c2;
+    --color-accent: #f0acd0;
+    --color-border: #493c49;
+  }
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --color-background: #201d24;
+  --color-surface: #2b2630;
+  --color-text: #f6edf1;
+  --color-muted: #c2b5c2;
+  --color-accent: #f0acd0;
+  --color-border: #493c49;
+}

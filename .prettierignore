@@ -1,0 +1,15 @@
+node_modules/
+build/
+dist/
+assets/
+_layouts/
+.astro/
+vendor/
+public/
+_images/
+docs/marketing/
+docs/icon/
+docs/animation/
+package-lock.json
+test-results/
+playwright-report/
