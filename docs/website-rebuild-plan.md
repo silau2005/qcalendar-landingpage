@@ -2,7 +2,7 @@
 
 Planning date: 2026-09-20
 Branch: `codex/website-rebuild-plan`
-Status: foundation implemented on this branch. Cloudflare Git deployment is being verified. Analytics and new content sections remain deferred.
+Status: foundation implemented on this branch. Cloudflare Git preview deployment and GitHub checks have been verified. Analytics and new content sections remain deferred.
 
 ## Scope
 
