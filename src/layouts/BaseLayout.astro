@@ -1,6 +1,12 @@
 ---
 import ThemePicker from '../components/ThemePicker.astro';
-import { content, languages, site, type Locale } from '../content/site';
+import {
+  content,
+  defaultLocale,
+  languages,
+  site,
+  type Locale,
+} from '../content/site';
 import '../styles/global.css';
 interface Props {
   title: string;
@@ -12,7 +18,7 @@ interface Props {
 const {
   title,
   description,
-  locale = 'en',
+  locale = defaultLocale,
   home = false,
   noindex = false,
 } = Astro.props;

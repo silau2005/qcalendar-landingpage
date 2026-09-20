@@ -16,6 +16,8 @@ export const languages = [
 
 export type Locale = (typeof languages)[number]['locale'];
 
+export const defaultLocale: Locale = 'zh';
+
 interface Copy {
   name: string;
   tagline: string;
@@ -35,18 +37,21 @@ interface Copy {
   theme: string;
   themes: { system: string; light: string; dark: string };
   screenshot: string;
+  previous: string;
+  next: string;
+  scrollHint: string;
 }
 
 export const content: Record<Locale, Copy> = {
   zh: {
     name: 'Q 行事曆',
-    tagline: '讓每一天，多一點可愛。',
-    description:
-      '用可愛貼紙裝飾日程，用喜歡的色彩安排生活。Q 行事曆，讓計劃變得有趣。',
+    tagline: 'Q 行事曆，讓計劃變得有趣！',
+    description: '用可愛的貼紙裝飾你的日程，並使用高效的功能輕鬆管理你的生活。',
     eyebrow: '你的日常，你的風格',
     available: '適用於 iPhone 與 Android',
-    preview: '看看你的新日常',
-    previewDescription: '熟悉的行事曆，加上一點屬於你的個性。',
+    preview: '預覽與截圖',
+    previewDescription:
+      '從貼紙、色彩到不同日曆檢視，看看 Q 行事曆如何幫你安排日常。',
     features: '生活大小事，都值得用心安排。',
     featureItems: [
       {
@@ -74,10 +79,13 @@ export const content: Record<Locale, Copy> = {
     theme: '外觀',
     themes: { system: '跟隨系統', light: '淺色', dark: '深色' },
     screenshot: 'Q 行事曆預覽',
+    previous: '上一張',
+    next: '下一張',
+    scrollHint: '左右滑動，瀏覽完整預覽；點選圖片可放大查看。',
   },
   en: {
     name: 'Q Calendar',
-    tagline: 'A little more joy in every day.',
+    tagline: 'Q Calendar, Plan with a Smile!',
     description:
       'Make plans, decorate with cute stickers, and find your favorite colors. A calendar that feels a little more like you.',
     eyebrow: 'YOUR DAYS, YOUR WAY',
@@ -114,10 +122,14 @@ export const content: Record<Locale, Copy> = {
     theme: 'Appearance',
     themes: { system: 'System', light: 'Light', dark: 'Dark' },
     screenshot: 'Q Calendar preview',
+    previous: 'Previous image',
+    next: 'Next image',
+    scrollHint:
+      'Scroll sideways to explore all screenshots. Select an image to view it full size.',
   },
   ja: {
     name: 'Q カレンダー',
-    tagline: '毎日に、ちょっとした楽しさを。',
+    tagline: 'Q カレンダー、笑顔で計画！',
     description:
       '可愛いステッカーと好きな色で、予定をあなたらしく。毎日の計画が楽しくなるカレンダー。',
     eyebrow: 'あなたの毎日を、あなたらしく',
@@ -152,5 +164,8 @@ export const content: Record<Locale, Copy> = {
     theme: '外観',
     themes: { system: 'システム', light: 'ライト', dark: 'ダーク' },
     screenshot: 'Q カレンダーのプレビュー',
+    previous: '前の画像',
+    next: '次の画像',
+    scrollHint: '左右にスクロールしてご覧ください。画像を選ぶと拡大できます。',
   },
 };
